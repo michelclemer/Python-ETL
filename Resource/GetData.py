@@ -19,11 +19,21 @@ class ColetarDados:
             if result:
 
                 numeros = result['numbers']
-                #print(numeros)
+                if numeros:
+                    minimum = numeros[0]
+                    for item in numeros:
+                        print(item)
+                        if item < minimum:
+                            minimum = item
+                    self.lista_ordenada.append(minimum)
+                    self.lista_todos_numeros += list(numeros)
+
+                print(numeros)
                 if not numeros:
                     #print("Final ", numeros)
-                    self.control = True
-                    return
+                    if self.control == False:
+                        self.ordenar()
+                        self.control = True
 
                 if 'numbers' not in result.keys():
                     print("Query error, ID ", id)
@@ -41,7 +51,7 @@ class ColetarDados:
                 if id > 1:
                     valor_inicio = id/2
                 for i in range(int(valor_inicio), id):
-                    #print(i)
+                    print(i)
                     task = asyncio.ensure_future(self.download_link(url=str(f"http://challenge.dienekes.com.br/api/numbers?page={i}"), session=session))
                     tasks.append(task)
             except:
@@ -58,29 +68,31 @@ class ColetarDados:
             asyncio.run(self.download_all(self.id))
         end = time.time()
         print(f'Finalizado {end - start} segundos')
-        self.ordenar()
+
 
 
     def ordenar(self):
-        if len(self.lista_todos_numeros) == 1:
-            listaOrdenada = []
-            x = 0
+        if len(self.lista_todos_numeros) > 1:
             lista = self.lista_todos_numeros
+            tamanho = len(self.lista_todos_numeros)
+            print("Tamanho lista ", tamanho)
+            ordered = []
             lowest = lista[0]
-            print("Antes = ", lista)
-            while len(lista) > 0:
-                if lista[x] < lowest:
-                    lowest = lista[x]
-                x += 1
-                if x == len(lista):
-                    listaOrdenada.append(lowest)
+            i = 0
+            while tamanho > 0:
+                if lista[i] < lowest:
+                    lowest = lista[i]
+                i += 1
+                if i == len(lista):
+                    ordered.append(lowest)
                     lista.remove(lowest)
                     if lista:
                         lowest = lista[0]
-                    x = 0
+                    i = 0
+                print(i)
+                self.lista_ordenada = ordered
 
-            print("Depois = ", listaOrdenada)
-            self.lista_ordenada = listaOrdenada
+
 
 
     def verificarStatus(self):
