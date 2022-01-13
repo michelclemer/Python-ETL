@@ -1,5 +1,5 @@
 from flask_restful import Resource,reqparse
-from Cliente.Client import Cliente
+from Client.Client import Cliente
 from Resource.GetData import ColetarDados
 import threading
 

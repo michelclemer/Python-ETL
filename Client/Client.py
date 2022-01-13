@@ -18,7 +18,7 @@ class Cliente:
     def adicionarCliente(self, chaveAdmin, nomeCliente, chaveCliente):
         if str(chaveAdmin) == self.chave['admin']:
             self.chave[nomeCliente] = hashlib.sha1(str(chaveCliente)).hexdigest()
-            return "Cliente adicionado"
+            return "Client adicionado"
         return "Usuario admin inválido"
 
 
