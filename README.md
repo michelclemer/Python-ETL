@@ -17,7 +17,7 @@ pip install -r requirements.txt
 Iniciar API:
 
 ```
-@root:~$ Python app.py
+Python app.py
 ```
 
 ## Iniciar API 
