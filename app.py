@@ -1,14 +1,9 @@
 from flask import Flask
-from flask_restful import Resource, Api
-
+from flask_restful import Api
+from Numbers import DesafioAPI
 
 app = Flask(__name__)
 api = Api(app)
-
-class DesafioAPI(Resource):
-
-    def get(self):
-        return {'numbers': 'n'}
 
 
 api.add_resource(DesafioAPI, '/numeros')
