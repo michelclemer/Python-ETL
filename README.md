@@ -3,7 +3,7 @@ Aplicação que realize um processo de ETL (Extract, Transform and Load)
 
 # Visão Geral
 
-Aplicaçõe feita em Python3.8 utilizando o framework Flask para coletar dados de uma API e disponibilizar em uma API REST.
+Aplicação feita em Python3.8 utilizando o framework Flask para coletar dados de uma API e disponibilizar em uma API REST.
 
 ## Instalação
 
